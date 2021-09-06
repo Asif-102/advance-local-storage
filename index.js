@@ -44,7 +44,8 @@ function addToCart(name, price) {
     const cart = getCart();
     let update = 0;
     for (const product of cart) {
-        if (product['name'] == name) {
+        if (product['name'].toLowerCase() == name.toLowerCase()) {
+
             product['price'] = price;
             product['quantity'] += 1;
             update = update + 1;
