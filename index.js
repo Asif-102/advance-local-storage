@@ -1,7 +1,7 @@
 function displayLocalStorageCart(){
     const cart = getCart();
     for(const pd of cart){
-        displayProducts(pd.name);
+        displayProducts(pd.name, pd.quantity, pd.price);
     }
 }
 
@@ -20,10 +20,10 @@ function addItem(){
     }
 }
 
-function displayProducts(name){
+function displayProducts(name, quantity, price){
     const ul = document.getElementById('all-products');
     const li = document.createElement('li');
-    li.innerText = name;
+    li.innerText = `Name: ${name} Quantity: ${quantity} Price: ${price}`;
     ul.appendChild(li);
 }
 
