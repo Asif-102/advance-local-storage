@@ -23,7 +23,7 @@ function addItem(){
 function displayProducts(name, quantity, price){
     const ul = document.getElementById('all-products');
     const li = document.createElement('li');
-    li.innerText = `Name: ${name} Quantity: ${quantity} Price: ${price}`;
+    li.innerText = `Name: ${name} || Quantity: ${quantity} || Price: ${price}`;
     ul.appendChild(li);
 }
 
