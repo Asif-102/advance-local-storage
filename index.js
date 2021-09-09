@@ -14,7 +14,8 @@ function addItem() {
     } else {
         // console.log(pdName.value,' ',pdPrice.value)
         addToCart(pdName.value, pdPrice.value);
-        location.reload();
+        document.getElementById('all-products').textContent='';
+        displayLocalStorageCart();
         pdName.value = '';
         pdPrice.value = '';
     }
@@ -46,7 +47,7 @@ function addToCart(name, price) {
     for (const product of cart) {
         if (product['name'].toLowerCase() == name.toLowerCase()) {
 
-            product['price'] = price;
+            product['price'] =parseInt(product['price'])+ parseInt(price);
             product['quantity'] += 1;
             update = update + 1;
         }
