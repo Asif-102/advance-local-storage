@@ -70,7 +70,7 @@ function addToCart(name, price) {
             product['quantity'] += 1;
             update = update + 1;
 
-            document.getElementById('add-update').innerText='Product Updated';
+            document.getElementById('add-update').innerText='Product Updated Successfully';
             setTimeout(()=>{
                 document.getElementById('add-update').innerText='';
             },2000)
@@ -83,7 +83,7 @@ function addToCart(name, price) {
         pd['price'] = price;
         cart.push(pd);
 
-        document.getElementById('add-update').innerText='Product added successfully';
+        document.getElementById('add-update').innerText='New Product added successfully';
         setTimeout(()=>{
             document.getElementById('add-update').innerText='';
         },2000)
