@@ -30,8 +30,12 @@ function displayProducts(name, quantity, price, index) {
     ul.appendChild(li);
 }
 
+//delete specefic product
 function deleteProduct(index){
-    console.log(index)
+    const cart =getCart();
+    cart.splice(index, 1);
+    const cartToString = JSON.stringify(cart);
+    localStorage.setItem('cart', cartToString);
 }
 
 
