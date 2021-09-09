@@ -39,6 +39,11 @@ function deleteProduct(index){
     localStorage.setItem('cart', cartToString);
     document.getElementById('all-products').textContent='';
     displayLocalStorageCart();
+    
+    document.getElementById('delete').innerText = 'Product Deleted Successfully';
+    setTimeout(()=>{
+        document.getElementById('delete').innerText = '';
+    },2000)
 }
 
 //get data from local storage
@@ -64,6 +69,11 @@ function addToCart(name, price) {
             product['price'] =parseInt(product['price'])+ parseInt(price);
             product['quantity'] += 1;
             update = update + 1;
+
+            document.getElementById('add-update').innerText='Product Updated';
+            setTimeout(()=>{
+                document.getElementById('add-update').innerText='';
+            },2000)
         }
     }
     if (update == 0) {
@@ -72,6 +82,11 @@ function addToCart(name, price) {
         pd['quantity'] = 1;
         pd['price'] = price;
         cart.push(pd);
+
+        document.getElementById('add-update').innerText='Product added successfully';
+        setTimeout(()=>{
+            document.getElementById('add-update').innerText='';
+        },2000)
     }
     const cartToString = JSON.stringify(cart);
     localStorage.setItem('cart', cartToString);
