@@ -33,7 +33,7 @@ function displayProducts(name, quantity, price, issue, index) {
 }
 
 //close issue
-function closeIssue(index){
+function closeIssue(index) {
     const cart = getCart();
     console.log(cart[index]);
     cart[index]['issue'] = 'closed';
@@ -107,13 +107,19 @@ function addToCart(name, price) {
 
 //clear local storage
 function placeOrder() {
-    document.getElementById('all-products').textContent = '';
-    localStorage.removeItem('cart');
+    const cart = getCart();
+    if (!cart || cart.length == 0) {
+        return;
+    }
+    else {
+        document.getElementById('all-products').textContent = '';
+        localStorage.removeItem('cart');
 
-    document.getElementById('complete-order').innerText = 'Your Order Completed Successfully...';
-    setTimeout(() => {
-        document.getElementById('complete-order').innerText = '';
-    }, 2000)
+        document.getElementById('complete-order').innerText = 'Your Order Completed Successfully...';
+        setTimeout(() => {
+            document.getElementById('complete-order').innerText = '';
+        }, 2000)
+    }
 }
 
 displayLocalStorageCart();
