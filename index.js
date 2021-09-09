@@ -27,7 +27,7 @@ function displayProducts(name, quantity, price, issue, index) {
     const ul = document.getElementById('all-products');
     const li = document.createElement('li');
     li.classList.add("pdList");
-    li.innerHTML = `Issue: <b>${issue}</b> Name: ${name} || Quantity: ${quantity} || Price: ${price} <button onclick="deleteProduct('${index}')" class="delete-btn">delete product</button> <button class="add-btn" onclick="closeIssue('${index}')">close</button>`;
+    li.innerHTML = `Issue: <b>${issue}</b> || Name: ${name} || Quantity: ${quantity} || Price: ${price} <button onclick="deleteProduct('${index}')" class="delete-btn">delete product</button> <button class="add-btn" onclick="closeIssue('${index}')">close</button>`;
 
     ul.appendChild(li);
 }
