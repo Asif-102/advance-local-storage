@@ -109,6 +109,7 @@ function addToCart(name, price) {
 function placeOrder() {
     const cart = getCart();
     if (!cart || cart.length == 0) {
+        localStorage.removeItem('cart');
         return;
     }
     else {
