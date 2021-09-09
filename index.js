@@ -3,7 +3,7 @@ function displayLocalStorageCart() {
     // for (const pd of cart) {
     //     displayProducts(pd.name, pd.quantity, pd.price);
     // }
-    cart.map((pd, index) => displayProducts(pd.name, pd.quantity, pd.price, index))
+    cart.map((pd, index) => displayProducts(pd.name, pd.quantity, pd.price, pd.issue, index))
 }
 
 
@@ -23,13 +23,24 @@ function addItem() {
 }
 
 //display list of products
-function displayProducts(name, quantity, price, index) {
+function displayProducts(name, quantity, price, issue, index) {
     const ul = document.getElementById('all-products');
     const li = document.createElement('li');
     li.classList.add("pdList");
-    li.innerHTML = `Name: ${name} || Quantity: ${quantity} || Price: ${price} <button onclick="deleteProduct('${index}')" class="delete-btn">delete product</button>`;
+    li.innerHTML = `Issue: <b>${issue}</b> Name: ${name} || Quantity: ${quantity} || Price: ${price} <button onclick="deleteProduct('${index}')" class="delete-btn">delete product</button> <button class="add-btn" onclick="closeIssue('${index}')">close</button>`;
 
     ul.appendChild(li);
+}
+
+//close issue
+function closeIssue(index){
+    const cart = getCart();
+    console.log(cart[index]);
+    cart[index]['issue'] = 'closed';
+    const cartToString = JSON.stringify(cart);
+    localStorage.setItem('cart', cartToString);
+    document.getElementById('all-products').textContent = '';
+    displayLocalStorageCart();
 }
 
 //delete specefic product
@@ -82,6 +93,7 @@ function addToCart(name, price) {
         pd['name'] = name;
         pd['quantity'] = 1;
         pd['price'] = price;
+        pd['issue'] = 'open';
         cart.push(pd);
 
         document.getElementById('add-update').innerText = 'New Product added successfully';
@@ -97,7 +109,7 @@ function addToCart(name, price) {
 function placeOrder() {
     document.getElementById('all-products').textContent = '';
     localStorage.removeItem('cart');
-    
+
     document.getElementById('complete-order').innerText = 'Your Order Completed Successfully...';
     setTimeout(() => {
         document.getElementById('complete-order').innerText = '';
