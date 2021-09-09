@@ -26,7 +26,7 @@ function addItem() {
 function displayProducts(name, quantity, price, index) {
     const ul = document.getElementById('all-products');
     const li = document.createElement('li');
-    li.innerHTML = `Name: ${name} || Quantity: ${quantity} || Price: ${price} <button onclick="deleteProduct('${index}')">delete product</button>`;
+    li.innerHTML = `Name: ${name} || Quantity: ${quantity} || Price: ${price} <button onclick="deleteProduct('${index}')" class="delete-btn">delete product</button>`;
 
     ul.appendChild(li);
 }
