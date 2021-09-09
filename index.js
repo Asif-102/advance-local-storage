@@ -22,6 +22,7 @@ function addItem() {
     }
 }
 
+//display list of products
 function displayProducts(name, quantity, price, index) {
     const ul = document.getElementById('all-products');
     const li = document.createElement('li');
@@ -36,9 +37,10 @@ function deleteProduct(index){
     cart.splice(index, 1);
     const cartToString = JSON.stringify(cart);
     localStorage.setItem('cart', cartToString);
+    displayLocalStorageCart();
 }
 
-
+//get data from local storage
 function getCart() {
     const cart = localStorage.getItem('cart');
     let cartProduct;
@@ -51,6 +53,7 @@ function getCart() {
     return cartProduct;
 }
 
+// add new product and update similar product
 function addToCart(name, price) {
     const cart = getCart();
     let update = 0;
@@ -73,6 +76,7 @@ function addToCart(name, price) {
     localStorage.setItem('cart', cartToString);
 }
 
+//clear local storage
 function placeOrder() {
     document.getElementById('all-products').textContent = '';
     localStorage.removeItem('cart');
