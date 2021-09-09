@@ -97,6 +97,7 @@ function addToCart(name, price) {
 function placeOrder() {
     document.getElementById('all-products').textContent = '';
     localStorage.removeItem('cart');
+    
     document.getElementById('complete-order').innerText = 'Your Order Completed Successfully...';
     setTimeout(() => {
         document.getElementById('complete-order').innerText = '';
