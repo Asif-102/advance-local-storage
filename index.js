@@ -37,6 +37,7 @@ function deleteProduct(index){
     cart.splice(index, 1);
     const cartToString = JSON.stringify(cart);
     localStorage.setItem('cart', cartToString);
+    document.getElementById('all-products').textContent='';
     displayLocalStorageCart();
 }
 
