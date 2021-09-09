@@ -3,7 +3,7 @@ function displayLocalStorageCart() {
     // for (const pd of cart) {
     //     displayProducts(pd.name, pd.quantity, pd.price);
     // }
-    cart.map((pd, index)=>displayProducts(pd.name, pd.quantity, pd.price, index))
+    cart.map((pd, index) => displayProducts(pd.name, pd.quantity, pd.price, index))
 }
 
 
@@ -15,7 +15,7 @@ function addItem() {
     } else {
         // console.log(pdName.value,' ',pdPrice.value)
         addToCart(pdName.value, pdPrice.value);
-        document.getElementById('all-products').textContent='';
+        document.getElementById('all-products').textContent = '';
         displayLocalStorageCart();
         pdName.value = '';
         pdPrice.value = '';
@@ -33,18 +33,18 @@ function displayProducts(name, quantity, price, index) {
 }
 
 //delete specefic product
-function deleteProduct(index){
-    const cart =getCart();
+function deleteProduct(index) {
+    const cart = getCart();
     cart.splice(index, 1);
     const cartToString = JSON.stringify(cart);
     localStorage.setItem('cart', cartToString);
-    document.getElementById('all-products').textContent='';
+    document.getElementById('all-products').textContent = '';
     displayLocalStorageCart();
-    
+
     document.getElementById('delete').innerText = 'Product Deleted Successfully';
-    setTimeout(()=>{
+    setTimeout(() => {
         document.getElementById('delete').innerText = '';
-    },2000)
+    }, 2000)
 }
 
 //get data from local storage
@@ -67,14 +67,14 @@ function addToCart(name, price) {
     for (const product of cart) {
         if (product['name'].toLowerCase() == name.toLowerCase()) {
 
-            product['price'] =parseInt(product['price'])+ parseInt(price);
+            product['price'] = parseInt(product['price']) + parseInt(price);
             product['quantity'] += 1;
             update = update + 1;
 
-            document.getElementById('add-update').innerText='Product Updated Successfully';
-            setTimeout(()=>{
-                document.getElementById('add-update').innerText='';
-            },2000)
+            document.getElementById('add-update').innerText = 'Product Updated Successfully';
+            setTimeout(() => {
+                document.getElementById('add-update').innerText = '';
+            }, 2000)
         }
     }
     if (update == 0) {
@@ -84,10 +84,10 @@ function addToCart(name, price) {
         pd['price'] = price;
         cart.push(pd);
 
-        document.getElementById('add-update').innerText='New Product added successfully';
-        setTimeout(()=>{
-            document.getElementById('add-update').innerText='';
-        },2000)
+        document.getElementById('add-update').innerText = 'New Product added successfully';
+        setTimeout(() => {
+            document.getElementById('add-update').innerText = '';
+        }, 2000)
     }
     const cartToString = JSON.stringify(cart);
     localStorage.setItem('cart', cartToString);
@@ -97,6 +97,10 @@ function addToCart(name, price) {
 function placeOrder() {
     document.getElementById('all-products').textContent = '';
     localStorage.removeItem('cart');
+    document.getElementById('complete-order').innerText = 'Your Order Completed Successfully...';
+    setTimeout(() => {
+        document.getElementById('complete-order').innerText = '';
+    }, 2000)
 }
 
 displayLocalStorageCart();
