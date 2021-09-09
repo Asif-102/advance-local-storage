@@ -1,8 +1,9 @@
 function displayLocalStorageCart() {
     const cart = getCart();
-    for (const pd of cart) {
-        displayProducts(pd.name, pd.quantity, pd.price);
-    }
+    // for (const pd of cart) {
+    //     displayProducts(pd.name, pd.quantity, pd.price);
+    // }
+    cart.map((pd, index)=>displayProducts(pd.name, pd.quantity, pd.price, index))
 }
 
 
@@ -21,11 +22,16 @@ function addItem() {
     }
 }
 
-function displayProducts(name, quantity, price) {
+function displayProducts(name, quantity, price, index) {
     const ul = document.getElementById('all-products');
     const li = document.createElement('li');
-    li.innerText = `Name: ${name} || Quantity: ${quantity} || Price: ${price}`;
+    li.innerHTML = `Name: ${name} || Quantity: ${quantity} || Price: ${price} <button onclick="deleteProduct('${index}')">delete product</button>`;
+
     ul.appendChild(li);
+}
+
+function deleteProduct(index){
+    console.log(index)
 }
 
 
